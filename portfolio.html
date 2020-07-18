@@ -245,11 +245,35 @@
           </div>
           <div class="sign">
             <p class="title"><b>Подпишитесь на рассылку</b></p>
-            <button class="button secondary" type="button">Подписаться</button>
+            <form action="" class="sign-form">
+              <input
+                type="email"
+                placeholder="E-mail"
+                name="email"
+                required="required"
+                id="email"
+              />
+              <button class="button secondary" type="submit">
+                Подписаться
+              </button>
+            </form>
           </div>
         </div>
         <p class="copyright">&#169;2020 | Developed by GoIT Students</p>
       </div>
     </footer>
+    <script>
+      (() => {
+        document.querySelector(".sign-form").addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          new FormData(e.currentTarget).forEach((value, name) =>
+            console.log(`${name}: ${value}`)
+          );
+
+          e.currentTarget.reset();
+        });
+      })();
+    </script>
   </body>
 </html>
