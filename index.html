@@ -57,7 +57,7 @@
           <h1 class="hero-title">
             эффективные решения<br />для вашего бизнеса
           </h1>
-          <a href="" class="button">Заказать услугу</a>
+          <button class="button" data-modal-open>Заказать услугу</button>
         </div>
       </section>
       <!-- Преимущества -->
@@ -421,6 +421,83 @@
           </ul>
         </div>
       </section>
+      <!-- Модалка -->
+      <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+          <button class="modal-button" data-modal-close>
+            <svg class="modal-icon" width="11" height="11">
+              <use href="./images/modal-sprite.svg#modalclose"></use>
+            </svg>
+          </button>
+          <p class="modal-title">Оставьте свои данные, мы вам перезвоним</p>
+          <form action="" class="modal-form">
+            <div class="form-field">
+              <input
+                class="form-input"
+                type="text"
+                name="name"
+                id="name"
+                placeholder=" "
+              />
+              <label class="form-label" for="name">Имя</label>
+              <svg class="modal-svg" width="18px" height="18">
+                <use href="./images/modal-sprite.svg#modalperson"></use>
+              </svg>
+            </div>
+            <div class="form-field">
+              <input
+                class="form-input"
+                type="tel"
+                name="tel"
+                id="tel"
+                placeholder=" "
+              />
+              <label class="form-label" for="tel">Телефон</label>
+              <svg class="modal-svg" width="18px" height="18">
+                <use href="./images/modal-sprite.svg#modalphone"></use>
+              </svg>
+            </div>
+            <div class="form-field">
+              <input
+                class="form-input"
+                type="email"
+                name="email"
+                id="email"
+                placeholder=" "
+              />
+              <label class="form-label" for="email">Почта</label>
+              <svg class="modal-svg" width="18px" height="18">
+                <use href="./images/modal-sprite.svg#modalemail"></use>
+              </svg>
+            </div>
+            <div class="comment-field">
+              <textarea
+                class="comment"
+                name="comment"
+                id="comment"
+                cols="30"
+                rows="10"
+                placeholder=" "
+              ></textarea>
+              <label class="comment-label" for="comment">Комментарий</label>
+            </div>
+            <label class="form-field">
+              <input
+                class="checkbox"
+                type="checkbox"
+                required="required"
+                value="agree"
+              />
+              <svg class="check-svg" width="16" height="15">
+                <use href="./images/modal-sprite.svg#modalrectangle"></use>
+              </svg>
+              Соглашаюсь с рассылкой и принимаю
+              <a href="" target="blank" class="modal-link">Условия договора</a>
+            </label>
+            <button type="submit" class="button">Отправить</button>
+          </form>
+        </div>
+      </div>
     </main>
     <!-- Подвал сайта -->
     <footer class="footer">
@@ -485,11 +562,51 @@
           </div>
           <div class="sign">
             <p class="title"><b>Подпишитесь на рассылку</b></p>
-            <button class="button secondary" type="button">Подписаться</button>
+            <form action="" class="sign-form">
+              <input
+                type="email"
+                placeholder="E-mail"
+                name="email"
+                required="required"
+                id="email"
+              />
+              <button class="button secondary" type="submit">
+                Подписаться
+              </button>
+            </form>
           </div>
         </div>
         <p class="copyright">&#169;2020 | Developed by GoIT Students</p>
       </div>
     </footer>
+    <script src="./js/modal.js"></script>
+    <script>
+      (() => {
+        document.querySelector(".sign-form").addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          new FormData(e.currentTarget).forEach((value, name) =>
+            console.log(`${name}: ${value}`)
+          );
+
+          e.currentTarget.reset();
+        });
+      })();
+    </script>
+    <script>
+      (() => {
+        document
+          .querySelector(".modal-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            new FormData(e.currentTarget).forEach((value, name) =>
+              console.log(`${name}: ${value}`)
+            );
+
+            e.currentTarget.reset();
+          });
+      })();
+    </script>
   </body>
 </html>
