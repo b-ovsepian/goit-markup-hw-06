@@ -587,6 +587,9 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
 }
+address {
+  font-style: normal;
+}
 .address {
   margin-right: 69px;
 }
